@@ -3,22 +3,38 @@ import os
 kontynuuj = True
 while kontynuuj:
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("=== ZADANIE 2: KONWERTER TEMPERATUR ===")
+    print("=== PROSTY KALKULATOR PYTHON===")
     
-    opcja = input("Wybierz kierunek konwersji (C - Celsjusz na Fahrenheit, F - Fahrenheit na Celsjusz): ").upper()
-    temp_wejsciowa = float(input("Podaj wartosc temperatury: "))
+    # 1. Pobieranie danych
+    liczba1 = float(input("Podaj pierwsza liczbe: "))
+    znak = input("Wybierz dzialanie (+, -, *, /): ")
+    liczba2 = float(input("Podaj druga liczbe: "))
     
-    print("---------------------------------------")
+    print("-------------------------")
+    wynik = 0
+    poprawna_operacja = True
     
-    if opcja == 'C':
-        fahrenheit = temp_wejsciowa * 1.8 + 32
-        print(f"Wynik: {temp_wejsciowa}C = {fahrenheit}F")
-    elif opcja == 'F':
-        celsjusz = (temp_wejsciowa - 32) / 1.8
-        print(f"Wynik: {temp_wejsciowa}F = {celsjusz}C")
+    # 2. Obliczenia
+    if znak == '+':
+        wynik = liczba1 + liczba2
+    elif znak == '-':
+        wynik = liczba1 - liczba2
+    elif znak == '*':
+        wynik = liczba1 * liczba2
+    elif znak == '/':
+        if liczba2 != 0:
+            wynik = integer1 / liczba2
+        else:
+            print("Blad! Nie mozna dzielic przez zero!")
+            poprawna_operacja = False
     else:
-        print("Blad! Niepoprawny wybor kierunku (wybierz C lub F).")
+        print("Nieznany znak dzialania!")
+        poprawna_operacja = False
         
-    print("=======================================")
-    if input("Czy chcesz przeliczyc kolejna temperature? (t/n): ").lower() == 'n':
+    # 3. Wyswietlenie wyniku
+    if poprawna_operacja:
+        print(f"Wynik: {liczba1} {znak} {liczba2} = {wynik}")
+        
+    print("=========================")
+    if input("Czy chcesz wykonac kolejne dzialanie? (t/n): ").lower() == 'n':
         kontynuuj = False
